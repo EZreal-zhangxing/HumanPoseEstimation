@@ -8,5 +8,15 @@
 
 本项目主要就是进行相关论文的一些收集和整理，以及在这一阶段的学习过程中的一些心得分享，同时做一个毕业论文的预热。以防不时之需。
 
+## 2.论文列表以及相关简短说明
+
+- [3D human pose estimation in video with temporal convolutions and semi-supervised training](./基于时间卷积和半监督学习的人体3D姿态估计.pdf)  
+
+​	这篇文章主要介绍的是，提出了一种全卷积结构，使用视频中人体的2D关键点进行准确的3D点预测
+
+- [PhysCap: Physically Plausible Monocular 3D Motion Capture in RealTime](./physcap_arxiv.pdf)
+
+​	这个文章提出了一种全新的基于全局、基于无标记的3D点估计方法，。第一阶段，通过运动学公式估计出3D身体姿势，然后通过卷积神经网络推测出输入视频的2D和3D联合位置，然后进行细化。第二阶段，对每一帧都会预测2D图像上脚跟和前脚掌的着地的位置。第三阶段，计算最终的3D人体姿态
+
 
 
