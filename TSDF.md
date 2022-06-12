@@ -355,26 +355,40 @@ X-Y-Z旋转方式的旋转矩阵 = $R_x(\alpha) * R_y(\beta) * R_z(\gamma)$ ，�
 
 ##### 2.2 TSDF 值计算
 
-更具世界坐标系下一点$p$得到体素的映射点$v$，$v$到相机原点的距离为$distance(v)$
-
-更具相机内参求得对应的像素坐标系中的一点$x$,得到深度$val(x)$,
-
-计算出sdf值:$sdf(p) = val(x) - distance(v)$
-
-计算tsdf值：
+对于体素中心点$x$ 有
 $$
-tsdf(p) = 
+sdf(x) = depth_i(pic(x)) - cam_z(x)
+$$
+其中$pic(x)$为体素中心对应到深度图片的映射，
+
+$depth_i(pic(x))$为相机与体素的射线到达最近平面的测量深度（深度值）
+
+$cam_z(x)$ 是体素与相机沿光射线的距离，每个体素到相机的距离在体素建立好之后是固定的
+
+$sdf(x)$ 同样也是光轴上的距离
+
+计算体素$x$的tsdf值：
+$$
+tsdf(x) = \max(-1,min(1,{sdf(x) \over t}))
+$$
+其中$t$为截断阈值，所以更具上式可以变形如下形式：
+$$
+tsdf(x) = 
 \begin{cases}
-sdf(p) \over |u| & if \ -u \le p \le u \  \\
-1 & if \ p > u \\
--1 & if \ p < 0
+{sdf(x) \over t} &, if & -t \lt sdf(x) \lt t \\
+1 &, if & sdf(x) \ge t \\
+-1 &, if & sdf(x) \le -t
 \end{cases}
 $$
 最后得到二维结果如下图：
 
 <img src="resize,m_fill,w_1356,h_824-20220612134918204.png" alt="img" style="zoom:50%;" />
 
-权重计算：对于不同帧对同一个体素进行观察更新，需要更具不同帧的测量角度来加权不同帧的准确度。
+更具上述的操作，多次观察的结果可以整合到一个TSDF帧中，通过这个可以整合不同视角来提高准确率并补充表面损失的地方。
+
+整合的操作就是通过加权和，以及迭代更新TSDF帧来进行
+
+权重计算：对于不同帧对同一个体素进行观察更新，需要更具不同帧的测量角度来加权不同帧。
 
 一般而言深度相机和目标夹角 $\theta$越小，那么观测到的越准确，因此定义帧的权重信息：
 $$
@@ -396,3 +410,32 @@ $$
 W_i = W_{i-1} + w_i
 $$
 
+反复执行既可以将新帧融合到之前的帧上
+
+对于大多数方法设置体素权重$w_i = 1$，相机之外的体素设为0
+
+### 算法参数
+
+#### 网格大小(Grid volume size)
+
+网格大小决定了TSDF网格的维度，这个值取决的GPU内存的上限。网格越大内存占用也越大
+
+#### 体素大小(Voxel size)
+
+体素越大，同等维度的3D网格，网格数越少，占用的内存也就越少，计算量也会越少。但是重建的精度也会下降
+
+#### 距离表示和阶段距离
+
+量化误差与$t$成正比，$t$越小越好，并且$t$ 应该大于体素对角长度$\sqrt d \cdot v$和噪音级别
+
+
+
+## Reference
+
+[3D Reconstruction——TSDF volume reconstruction](https://wlsdzyzl.top/2019/01/25/3D-Reconstruction%E2%80%94%E2%80%94TSDF-volume-reconstruction/)
+
+
+
+## Marching Cube
+
+等值面提取
