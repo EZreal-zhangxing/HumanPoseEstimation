@@ -1,6 +1,6 @@
 # TSDF(truncated singed distance function)
 
-## SDF(Singed distance Field)
+## SDF(Singed distance function)
 
 
 
