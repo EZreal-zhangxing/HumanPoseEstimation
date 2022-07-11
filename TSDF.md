@@ -183,7 +183,7 @@ y_p' \\
 \begin{pmatrix}
 f & 0 & 0 & 0 \\
 0 & f & 0 & 0 \\
-0 & 0 & f & 0 \\
+0 & 0 & 1 & 0 \\
 \end{pmatrix}
 \begin{pmatrix}
 X_p \\
@@ -197,7 +197,7 @@ $$
 
 因为像素的单位和图像坐标系的单位并不统一，图像坐标系单位为mm，像素坐标系为第几个像素
 
-并且坐标原点也不同意，图像坐标系的原点为中心，而像素坐标系一般为左上角。如下图
+并且坐标原点也不统一，图像坐标系的原点为中心，而像素坐标系一般为左上角。如下图
 
 <img src="v2-4303d7a78ed63fae23e145492ce17fef_720w-20220612131517124.jpg" alt="img" style="zoom:50%;" />
 
@@ -239,14 +239,14 @@ Z_p
 \begin{pmatrix}
 f & 0 & 0 & 0 \\
 0 & f & 0 & 0 \\
-0 & 0 & f & 0 \\
+0 & 0 & 1 & 0 \\
 \end{pmatrix}
 \begin{pmatrix}
 X_p \\
 Y_p \\
 Z_p \\
 1 \\ 
-\end{pmatrix} \rightarrow 
+\end{pmatrix} \rightarrow
 $$
 整理得：
 $$
