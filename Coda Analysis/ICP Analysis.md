@@ -206,6 +206,7 @@ def compute_vertex(depth, K):
     X_p = (u-cx)*Z_p/fx
     同理
     Y_p = (v - cy) * Z_p /fy
+    
     '''
     vertex = torch.stack([(i - cx) / fx, (j - cy) / fy, torch.ones_like(i)], -1).to(device) * depth[..., None]  # [h, w, 3]
     return vertex

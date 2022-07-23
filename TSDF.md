@@ -280,6 +280,17 @@ ${f \over dx}$一般写为$focal_x$，${f \over dy}$一般写为$focal_y$，
 
 $u_0$一般写为$p_x$，$v_0$一般写为$p_y$ 分别表示在x，y轴上中心点的偏移
 
+变换关系如下：
+$$
+\begin{cases}
+{focal_x * X_p \over Z_p} + u_0 = u \\
+{focal_y * Y_p \over Z_p} + v_0 = v \\
+\end{cases} \rightarrow
+\begin{cases}
+{Z_p * (u - u_0) \over focal_x}  = X_p \\
+{Z_p * (v - v_0) \over focal_y}  = Y_p \\
+\end{cases}
+$$
 
 
 ###### 2.1.3 相机坐标系转换为世界坐标系
