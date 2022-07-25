@@ -5,7 +5,7 @@
 建议通过conda安装，在官网找到如下命令
 
 ```shell
-conda create -n rapids-22.06 -c rapidsai -c nvidia -c conda-forge rapids=22.06 python=3.9 cudatoolkit=11.5
+conda create -n rapids-22.06 -c rapidsai -c nvidia -c conda-forge rapids=22.06 python=3.8 cudatoolkit=11.4
 ```
 
 但是通过这个方式安装其中会有一个包cuda-python会安装版本（11.7.1）过高导致报错
