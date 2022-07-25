@@ -28,3 +28,9 @@ typeError: C function cuda.ccudart.cudaStreamSynchronize has wrong signature (ex
 
 升级torch=1.8.1+cu111 到1.11.0+cu115 即可
 
+torchvision 使用 0.9.1+cu111
+
+cudatoolkit使用11.4.1
+
+
+
