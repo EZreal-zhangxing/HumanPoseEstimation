@@ -250,16 +250,20 @@ Z_p \\
 \end{pmatrix} \rightarrow
 $$
 整理得：
+
+**形式一：**
 $$
-Z_p\begin{pmatrix}
-u \\
-v \\
+\begin{pmatrix}
+uZ_p \\
+vZ_p \\
+Z_p \\
 1 \\
 \end{pmatrix} = 
 \begin{pmatrix}
 {f \over dx} & 0 & u_0 & 0 \\
 0 & {f \over dy} & v_0 & 0 \\
 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
 \end{pmatrix}
 \begin{pmatrix}
 X_p \\
@@ -274,6 +278,33 @@ Z_p \\
 1 \\ 
 \end{pmatrix}
 $$
+**形式二：**
+$$
+Z_p\begin{pmatrix}
+u \\
+v \\
+1 \\
+\end{pmatrix} = 
+\begin{pmatrix}
+{f \over dx} & 0 & u_0 \\
+0 & {f \over dy} & v_0 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+X_p \\
+Y_p \\
+Z_p \\
+\end{pmatrix} = M_{in} 
+\begin{pmatrix}
+X_p \\
+Y_p \\
+Z_p \\
+\end{pmatrix}
+$$
+形式一与形式二的主要区别是多了一个平移向量的对应关系(第四列)，为了方便求逆会填充成$(4 \times 4)$ 的内参矩阵。如果没有一般情况都是形式二$3 \times 3$的内参矩阵
+
+
+
 $M_{in}$就是**内参矩阵**
 
 ${f \over dx}$一般写为$focal_x$，${f \over dy}$一般写为$focal_y$，
