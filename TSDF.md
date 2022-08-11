@@ -481,7 +481,7 @@ $$
 
 ## Reference
 
-[3D Reconstruction——TSDF volume reconstruction](https://wlsdzyzl.top/2019/01/25/3D-Reconstruction%E2%80%94%E2%80%94TSDF-volume-reconstruction/)
+[3D Reconstruction——TSDF volume reconstruction](https://	.top/2019/01/25/3D-Reconstruction%E2%80%94%E2%80%94TSDF-volume-reconstruction/)
 
 
 
