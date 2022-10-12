@@ -8,6 +8,16 @@
 
 本项目主要就是进行相关论文的一些收集和整理，以及在这一阶段的学习过程中的一些心得分享，同时做一个毕业论文的预热。以防不时之需。
 
+Update:2022年10月12日13:00:11
+
+毕业论文提交一段时间后回来更新。
+
+经过一段时间的探索发现，人体动作捕捉的主要技术路线与之前的路线并不能完全一致，不能就跟踪方向进行深入研究。
+
+目前人体动作捕捉技术比较优秀的算法主要是基于传统方法，例如DynamicFusion、DoubleFusion、BodyFusion等。基于神经网络的有NeuralTracking和OcclusionFusion等，包含追踪的内容少之又少。
+
+因此这个项目主要就传统方法中的相关技术进行了梳理，并整理了大致内容。有兴趣可以看NICP(Non-rigid ICP)论文复现项目。
+
 ## 2.论文列表以及相关简短说明
 
 - [3D human pose estimation in video with temporal convolutions and semi-supervised training](./基于时间卷积和半监督学习的人体3D姿态估计.pdf)  
@@ -21,4 +31,6 @@
 - [XNect: Real-time Multi-Person 3D Motion Capture with a Single RGBCamera](./XNect_SIGGRAPH2020.pdf)
 
 ​	这篇文章提出使用一个可以实时计算$(30fps)$ 的单摄像头估计方法，并且该方法使用两个阶段的神经网络，来做局部和全局的推理。第一阶段使用全卷积对2D和3D姿势进行联合推理，确保计算量不会增加(可能是特征提取？)。第一阶段只考虑直接图像证据可用的身体关节。例如：关节可见或者父关节可见。第二阶段依赖第一阶段提取的证据来解码3D姿态。第二阶段使用网路来对每个检测到的目标的全局环境进行推理关节闭合。
+
+待更新。。。
 
